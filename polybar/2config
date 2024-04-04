@@ -1,0 +1,361 @@
+
+[colors]
+; Tokyo Night Dark theme ============
+background = #24283b
+foreground = #c0caf5
+alert = #e06c75
+volume-min = #a3be8c
+volume-med = #ebcb8b
+volume-max = #bf616a
+pink = #f7768e
+orange = #ff9e64
+dark-orange = #e0af68
+green = #9ece6a
+teal = #73daca
+light-blue = #b4f9f8
+cyan = #2ac3de
+blue = #7dcfff
+blurple = #7aa2f7
+purple = #bb9af7
+light-purple = #c0caf5
+light-dark-purple = #a9b1d6
+dark-purple = #9aa5ce
+beige = #cfc9c2
+really-dark-purple = #565f89
+; black = #414868
+really-black = #24283b
+blacker = #1a1b26
+black = #000000
+
+
+[bar/bar1]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 99%
+height = 22
+offset-x = 0.5%
+offset-y = 0%
+radius = 9.0
+fixed-center = true
+bottom = false
+separator = "//"
+
+; Opaque background
+; background = #00
+background = ${colors.black}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "FiraCode Nerd Font:size=10;2"
+font-1 = "FiraCode Nerd Font:size=13;4"
+font-2 = "FiraCode Nerd Font:size=10;2"
+font-3 = "FiraCode Nerd Font:size=10;2"
+
+; modules-left = bspwm xwindow
+modules-left = date
+modules-center = ewmh
+modules-right = pulseaudio xkeyboard battery powermenu
+
+tray-position = none
+tray-padding = 2
+;tray-background = #0063ff
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/date]
+type = internal/date
+interval = 5
+; format-background = ${colors.black}
+
+date = 
+time = %H:%M
+
+date-alt = " %d.%m.%Y ||"
+time-alt = %H:%M:%S
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background= #0a6cf5
+format-underline = #0a6cf5
+format-foreground = #fff
+
+label = %date% %time%
+
+[module/ewmh]
+; [module/xworkspaces]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = false
+
+; Groups workspaces by monitor. If set to false, workspaces are not grouped and
+; appear in the order provided by the WM
+; If set to false, cannot be used together with label-monitor
+; New in version 3.7.0
+; Default: true
+group-by-monitor = true
+
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+
+icon-0 = 
+icon-1 = 
+icon-2 = 󰊻
+icon-3 = 
+icon-default = 
+
+format = <label-state>
+label-monitor = %name%
+
+label-active = %name%
+label-active-foreground = #ffffff
+label-active-background = #3f3f3f
+label-active-underline = #fba922
+label-active-padding = 4
+
+label-occupied = %icon%
+label-occupied-underline = #555555
+
+label-urgent = %icon%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = #55
+label-empty-padding = 2
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+interval = 5
+reverse-scroll = false
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.purple}
+
+label-muted = 󰝟 muted
+label-muted-prefix-background = ${colors.dark-purple}
+label-muted-foreground = #666
+label-muted-underline = ${colors.dark-purple}
+
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+
+; Right and Middle click
+click-right = pavucontrol
+; click-middle = 
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+; format-background = ${colors.black}
+
+format-prefix = "   "
+format-prefix-foreground = ${colors.black}
+format-prefix-background = ${colors.dark-orange}
+format-prefix-underline = ${colors.dark-orange}
+
+label-layout = " %layout%"
+label-layout-underline = ${colors.dark-orange}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.dark-orange}
+label-indicator-underline = ${colors.dark-orange}
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp59s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = #9f78e1
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-t}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground}
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+; format-background = ${colors.black}
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.blue}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = "  "
+format-full-prefix-foreground = ${colors.black}
+format-full-underline = ${self.format-charging-underline}
+
+; ramp-capacity-0 = 
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+animation-charging-0 = 󱐥
+; animation-charging-1 = 
+; animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 󰂍
+; animation-discharging-1 = 
+; animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground}
+animation-discharging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = " "
+label-open-foreground = ${colors.alert}
+label-close =  cancel
+label-close-foreground = ${colors.foreground}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+;Powermenu
+menu-0-0 = "Reboot "
+menu-0-0-exec = #powermenu.open.1
+menu-0-0-foreground = ${colors.alert}
+
+menu-0-1 = "Power Off"
+menu-0-1-exec = #powermenu.open.2
+menu-0-1-foreground = ${colors.alert}
+
+menu-0-2 = "Hibernate"
+menu-0-2-exec = #powermenu.open.3
+menu-0-2-foreground = ${colors.alert}
+
+;Reboot
+menu-1-0 = "Cancel "
+menu-1-0-exec = #powermenu.open.0
+menu-1-0-foreground = ${colors.alert}
+menu-1-1 = "Reboot"
+menu-1-1-exec = systemctl reboot
+menu-1-1-foreground = ${colors.alert}
+
+;Shutdown
+menu-2-0 = "Power off"
+menu-2-0-exec = systemctl poweroff
+menu-2-0-foreground = ${colors.alert}
+menu-2-1 = "Cancel "
+menu-2-1-exec = #powermenu.open.0
+menu-2-1-foreground = ${colors.alert}
+
+;Hibernate
+menu-3-0 = "Hibernate "
+menu-3-0-exec = systemctl hibernate
+menu-3-0-foreground = ${colors.alert}
+menu-3-1 = "Cancel"
+menu-3-1-exec = #powermenu.open.0
+menu-3-1-foreground = ${colors.alert}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

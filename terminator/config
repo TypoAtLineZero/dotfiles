@@ -1,0 +1,114 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 0.9
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = FiraCode Nerd Font Propo 10
+    foreground_color = "#839496"
+    show_titlebar = False
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    copy_on_selection = True
+    split_to_group = True
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 68:27
+      maximised = True
+      fullscreen = False
+      size = 1852, 1016
+      title = franz@franz-innotech: ~/.config/terminator
+      last_active_term = d2977d5e-7011-4f47-a29f-b6b99ad2e6bb
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 506
+      ratio = 0.5004945598417408
+    [[[child2]]]
+      type = HPaned
+      parent = child1
+      order = 0
+      position = 924
+      ratio = 0.5002707092582567
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = d2977d5e-7011-4f47-a29f-b6b99ad2e6bb
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = 267535ea-d526-4a37-a76f-91fe2ae6130e
+    [[[terminal5]]]
+      type = Terminal
+      parent = child1
+      order = 1
+      profile = default
+      uuid = 96932222-4282-4ad4-9ecc-cb7361eccfaf
+  [[MTTF]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 74:27
+      maximised = True
+      fullscreen = False
+      size = 1846, 1016
+      title = franz@franz-innotech: ~/.config/terminator
+      last_active_term = 96932222-4282-4ad4-9ecc-cb7361eccfaf
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 200
+      ratio = 0.19782393669634027
+    [[[child2]]]
+      type = HPaned
+      parent = child1
+      order = 0
+      position = 921
+      ratio = 0.5002715915263444
+    [[[terminal3]]]
+      type = Terminal
+      parent = child2
+      order = 0
+      profile = default
+      uuid = d2977d5e-7011-4f47-a29f-b6b99ad2e6bb
+    [[[terminal4]]]
+      type = Terminal
+      parent = child2
+      order = 1
+      profile = default
+      uuid = 267535ea-d526-4a37-a76f-91fe2ae6130e
+    [[[child5]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 403
+      ratio = 0.5
+    [[[terminal6]]]
+      type = Terminal
+      parent = child5
+      order = 0
+      profile = default
+      uuid = 96932222-4282-4ad4-9ecc-cb7361eccfaf
+    [[[terminal7]]]
+      type = Terminal
+      parent = child5
+      order = 1
+      profile = default
+      uuid = 119495bb-4069-42a9-b5b1-c2f823724c1d
+[plugins]
